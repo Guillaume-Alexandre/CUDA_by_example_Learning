@@ -10,7 +10,6 @@
 #ifndef LIB
 #define LIB
 #include "lib\book.h"
-#include "lib\cpu_anim.h"
 #endif // !LIB
 
 #include "kernel.cuh"
@@ -36,7 +35,7 @@ int main(void) {
 	cudaEventRecord(start, 0);
 
 	cudaStream_t stream;
-	cudaStreamCreate(&stream));
+	cudaStreamCreate(&stream);
 	int *host_a, *host_b, *host_c;
 	int *dev_a, *dev_b, *dev_c;
 
@@ -56,7 +55,7 @@ int main(void) {
 	for (int i = 0; i < FULL_DATA_SIZE; i += N) {
 		cudaMemcpyAsync(dev_a, host_a + i, N * sizeof(int), cudaMemcpyHostToDevice, stream);
 		cudaMemcpyAsync(dev_b, host_b + i, N * sizeof(int), cudaMemcpyHostToDevice, stream);
-		
+
 		kernel << <N / 256, 256, 0, stream >> > (dev_a, dev_b, dev_c);
 
 		cudaMemcpyAsync(host_c + i, dev_c, N * sizeof(int), cudaMemcpyDeviceToHost, stream);
@@ -66,7 +65,7 @@ int main(void) {
 
 	cudaEventRecord(stop, 0);
 	cudaEventSynchronize(stop);
-	cudaEventElapsedTime(&elapsedTime,start, stop);
+	cudaEventElapsedTime(&elapsedTime, start, stop);
 
 	printf("Time taken: %3.1f ms\n", elapsedTime);
 

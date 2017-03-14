@@ -16,6 +16,8 @@
 #ifndef HEAD_KERNEL
 #define HEAD_KERNEL
 
+__global__ void kernel(int *a, int *b, int *c);
+
 __global__ void kernel(int *a, int *b, int *c) {
 	int idx = threadIdx.x + blockIdx.x * blockDim.x;
 	if (idx < N) {
@@ -25,6 +27,7 @@ __global__ void kernel(int *a, int *b, int *c) {
 		float bs = (b[idx] + b[idx1] + b[idx2]) / 3.0f;
 		c[idx] = (as + bs) / 2;
 	}
+}
 
 
 
