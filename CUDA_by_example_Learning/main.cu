@@ -56,6 +56,11 @@ int main(void) {
 			prop.maxGridSize[0], prop.maxGridSize[1],
 			prop.maxGridSize[2]);
 		printf("\n");
+
+		//Compte le nombre de device, important pour chapitre 10 et +
+		int deviceCount;
+		cudaGetDeviceCount(&deviceCount);
+		printf("Device Count : %d\n", count);
 	}
 	return 0;
 
