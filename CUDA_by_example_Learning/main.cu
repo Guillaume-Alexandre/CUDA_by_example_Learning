@@ -1,4 +1,5 @@
-//kernel
+//main
+
 #ifndef ALL
 #define ALL
 #include <iostream>

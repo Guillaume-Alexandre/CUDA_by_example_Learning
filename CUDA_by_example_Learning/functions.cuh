@@ -17,5 +17,4 @@ void function(int arg) {
 
 
 
-
 #endif // !HEAD_FUNCTIONS

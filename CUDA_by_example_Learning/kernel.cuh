@@ -30,5 +30,4 @@ __global__ void kernel(void) {
 
 
 
-
 #endif // !HEAD_KERNEL
